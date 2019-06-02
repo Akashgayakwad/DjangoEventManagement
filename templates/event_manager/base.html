@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>
+      {% block title_block %}
+      {% endblock %}
+    </title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        <ul class="nav navbar-nav">
+          <li><a class="navbar-brand" href="{% url 'index' %}">DJANGO</a></li>
+          <li><a class="navbar-link" href="{% url 'admin:index' %}">Admin</a></li>
+          <li><a class="navbar-link" href="{% url 'event_manager:register' %}">Register</a></li>
+          {% if user.is_authenticated %}
+            <li><a class="navbar-link" href="{% url 'event_manager:show' %}">View Events</a></li>
+              {% if my_role == 'O' %}
+                <li><a class="navbar-link" href="{% url 'event_manager:create' %}">Create Event</a></li>
+                <li><a class="navbar-link" href="{% url 'event_manager:edit' %}">Edit Event</a></li>
+                <li><a class="navbar-link" href="{% url 'event_manager:delete' %}">Delete Event</a></li>
+              {% endif %}
+            <li><a class="navbar-link" href="{% url 'logout' %}">Logout</a></li>
+          {% else %}
+            <li><a class="navbar-link" href="{% url 'event_manager:user_login' %}">Log In</a></li>
+          {% endif %}
+        </ul>
+      </div>
+    </nav>
+    <div class="container">
+      {% block button_block%}
+      {% endblock%}
+      {% block body_block %}
+      {% endblock %}
+    </div>
+  </body>
+</html>

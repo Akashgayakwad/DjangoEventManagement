@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% extends "event_manager/base.html" %}
+
+{% block title_block %}
+  REGISTER
+{% endblock %}
+
+{% block body_block %}
+<div class="jumbotron">
+  {% if registered %}
+    <h3>Thankyou for Registering</h3>
+  {% else %}
+    <h2>Register Here</h2>
+    <h3>Fill out the form:</h3>
+    <form class="" method="post">
+      {% csrf_token %}
+      {{ user_form.as_p }}
+      {{ profile_form.as_p }}
+      <input type="submit" name="" value="Register">
+    </form>
+  {% endif %}
+</div>
+{% endblock %}
