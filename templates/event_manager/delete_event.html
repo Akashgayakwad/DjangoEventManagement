@@ -11,6 +11,10 @@
 
 {% block body_block %}
   <div class="jumbotron">
-    <h1>Delete Here</h1>
+    {% if my_role == 'O'%}
+      <h1>Delete your event here</h1>
+    {% else %}
+      <h1>You Dont Have Permission</h1>
+    {% endif %}
   </div>
 {% endblock %}

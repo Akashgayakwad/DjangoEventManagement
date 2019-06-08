@@ -14,6 +14,11 @@ class UserProfileInfoForm(forms.ModelForm):
         fields = ('user_role',)
 
 class EventForm(forms.ModelForm):
+    event_date = forms.DateField(widget = forms.SelectDateWidget())
     class Meta:
         model = Event
-        fields = '__all__'
+        labels = {
+        "event_time":"Event time(hh:mm:ss)",
+        "event_duration": "Event duration(hh:mm:ss)"
+        }
+        exclude = ("event_organizer",)

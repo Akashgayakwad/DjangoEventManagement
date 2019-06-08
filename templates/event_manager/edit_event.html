@@ -6,11 +6,21 @@
 {% endblock %}
 
 {% block button_block%}
-  <a href="/" class="btn btn-default btn-lg">Go Back</a>
+  <a href="/event" class="btn btn-default btn-lg">Go Back</a>
 {% endblock%}
 
 {% block body_block %}
   <div class="jumbotron">
-    <h1>Edit Here</h1>
+    {% if editaccess == 'YES' %}
+      <h1>Host your event here</h1>
+      <form class="" enctype="multipart/form-data" method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" name="" class="btn btn-primary" value="Update">
+      </form>
+    {% else %}
+      {{authorization}}
+      <h1>You Dont Have Permission</h1>
+    {% endif %}
   </div>
 {% endblock %}

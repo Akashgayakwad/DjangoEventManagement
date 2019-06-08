@@ -19,8 +19,6 @@
             <li><a class="navbar-link" href="{% url 'event_manager:show' %}">View Events</a></li>
               {% if my_role == 'O' %}
                 <li><a class="navbar-link" href="{% url 'event_manager:create' %}">Create Event</a></li>
-                <li><a class="navbar-link" href="{% url 'event_manager:edit' %}">Edit Event</a></li>
-                <li><a class="navbar-link" href="{% url 'event_manager:delete' %}">Delete Event</a></li>
               {% endif %}
             <li><a class="navbar-link" href="{% url 'logout' %}">Logout</a></li>
           {% else %}

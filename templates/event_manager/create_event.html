@@ -11,6 +11,15 @@
 
 {% block body_block %}
   <div class="jumbotron">
-    <h1>Host your event here</h1>
+    {% if my_role == 'O'%}
+      <h1>Host your event here</h1>
+      <form class="" enctype="multipart/form-data" method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" name="" class="btn btn-primary" value="Create">
+      </form>
+    {% else %}
+      <h1>You Dont Have Permission</h1>
+    {% endif %}
   </div>
 {% endblock %}

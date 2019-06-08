@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% extends "event_manager/base.html" %}
+
+{% block title_block %}
+  EVENTS
+{% endblock %}
+
+{% block button_block%}
+  <a href="/event/" class="btn btn-default btn-lg">Go Back</a>
+{% endblock%}
+
+{% block body_block %}
+  <div class="jumbotron">
+    {% if event %}
+      {% if event.event_visibility == 'V' %}
+        <div class="row">
+          <div class="col-lg-6">
+            <h1>Event Details</h1>
+            <h3>Event Name:{{event.event_name}}</h3>
+            <h3>Event Organizer:{{event.event_organizer}}</h3>
+            <h5>Event Date:{{event.event_date}}</h5>
+            <h5>Event Time:{{event.event_time}}</h5>
+            <h5>Event Duration:{{event.event_duration}}</h5>
+            <h5>Event Venue:{{event.event_venue}}</h5>
+            <a class="btn btn-primary btn-lg" href="/event/edit/{{event.event_id}}">Edit</a>
+            <a class="btn btn-danger btn-lg" href="/event/delete/{{event.event_id}}">Delete</a>
+          </div>
+          <div class="col-lg-6">
+            <img height="400px" width="500px" src="{{ event.event_poster.url }}" style="display: block;border: 1px dashed black; max-width:500px; max-height:400px; width: auto; height: auto;">
+          </div>
+        </div>
+      {% else %}
+        <h2>Event is Hidden</h2>
+      {% endif %}
+    {% else %}
+      <h2>Event Not Found</h2>
+    {% endif %}
+  </div>
+{% endblock %}

@@ -25,8 +25,10 @@ class Event(models.Model):
     event_organizer = models.ForeignKey(User, on_delete=models.CASCADE)
     event_name = models.CharField( max_length= 40)
     event_poster = models.ImageField(upload_to='event_posters',blank=False)
+    event_date = models.DateField()
     event_time = models.TimeField()
     event_duration = models.DurationField()
+    event_venue = models.CharField( max_length= 100)
     event_visibility = models.CharField( max_length=1,
                                   choices=Visibility)
     def __str__(self):
